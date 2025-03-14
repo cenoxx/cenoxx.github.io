@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jomolhari', serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    line-height: 1.6;
+    margin: 0; /* Ensure no default margin */
+}
+
+/* Full-Screen Sections */
+header, section {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content:center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    padding: 20px; 
+    scroll-snap-align: start; 
+}
+
+/* Header */
+header {
+    background: url('../Resources/bgimage.png') no-repeat center center/cover;
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Black overlay with 50% opacity */
+    z-index: 1; 
+}
+
+.hero {
+    position: relative; /* Ensure content stays above overlay */
+    z-index: 2; /* Above the ::before overlay */
+    display: flex; /* Ensure flexbox for stacking */
+    flex-direction: column; /* Stack image and button vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically within hero */
+    gap: 20px; /* Space between image and button */
+}
+
+.hero h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    width: 500px; /* Default size */
+}
+
+.cta-button {
+    width: 200px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #cc0000;
+}
+
+/* Navigation */
+.scroll-nav {
+    background-color: #333;
+    padding: 15px 0;
+    position: fixed; /* Changed from sticky to fixed */
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-100%); /* Slide off the top */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.scroll-nav.visible {
+    opacity: 1; /* Visible when scrolled */
+    transform: translateY(0); /* Slide back down */
+}
+
+.scroll-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.scroll-nav ul li {
+    margin: 0 20px;
+}
+
+.scroll-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.scroll-nav ul li a:hover {
+    color: #ff0000;
+}
+
+/* Section Specific Styles */
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+section p, section ul {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section ul {
+    list-style: none;
+}
+
+section ul li {
+    margin: 10px 0;
+}
+
+section ul li a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+section ul li a:hover {
+    text-decoration: underline;
+}
+
+#video {
+    padding: 0; /* Remove padding to maximize video size */
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100vw; /* Ensure it fills width */
+    min-height: 100vh; /* Ensure it fills height */
+    object-fit: cover; /* Crop to fit, if supported */
+}
+
+
+.socials li{
+    display: inline-flex;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    scroll-snap-align: end;  
+}
+
+/* Music Section */
+.music-nav {
+    margin: 20px 0;
+}
+
+.tab-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #ff0000;
+}
+
+.tab-button.active {
+    background-color: #ff0000;
+}
+
+.music-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.spotify-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.spotify-iframe {
+    width: 100%;
+    height: 380px;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .spotify-iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .spotify-iframe {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        width: 150px; /* Smaller on mobile */
+    }
+}
+
+html {
+    scroll-snap-type: y mandatory; /* Snap to each section */
+    overflow-y: scroll; /* Ensure scrolling works */
+    scroll-behavior: smooth;
+}
