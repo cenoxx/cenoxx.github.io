@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The End at Last - Ohio Hardcore/Metalcore</title>
+    <link rel="stylesheet" href="..\Styles\styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="scroll-nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <div class="hero">
+            <!--<h1 class="title">The End at Last</h1>-->
+            <img class="hero-image" src="../Resources/TEAL EP Cover JPG.jpg"/>
+            <div>
+                <a href="" class="cta-button">Buy now!</a>
+                <a href="#music" class="cta-button">Stream now!</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="video">
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/fzWVRzTn-5E?si=nuGp2P3Y1WmJ94h4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About The Band</h2>
+        <p>The End at Last is a metalcore/hardcore band originating in Dayton, Ohio.</p>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music">
+        <h2>Music</h2>
+        <p>Check out our latest tracks below:</p>
+        <div class="music-nav">
+            <button class="tab-button active" data-tab="spotify">Spotify</button>
+            <button class="tab-button" data-tab="apple">Apple Music</button>
+        </div>
+        <div class="music-content">
+            <div id="spotify" class="tab-pane active">
+                <div class="spotify-container">
+                    <iframe src="https://open.spotify.com/embed/artist/YOUR_SPOTIFY_ARTIST_ID" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media"
+                            class="spotify-iframe"></iframe>
+                </div>
+            </div>
+            <div id="apple" class="tab-pane">
+                <iframe src="https://embed.music.apple.com/us/artist/YOUR_APPLE_MUSIC_ID" 
+                        height="450" 
+                        frameborder="0" 
+                        allow="autoplay; encrypted-media;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: theendatlastOH@gmail.com</p>
+        <p>Follow us on socials:</p>
+        <ul class="socials">
+            <li><a href="https://instagram.com/theendatlast" target="_blank">Instagram</a></li>
+            <li><a href="https://twitter.com/theendatlast" target="_blank">X</a></li>
+            <li><a href="https://facebook.com/theendatlast" target="_blank">Facebook</a></li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The End at Last. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        // Scroll to Show Nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.scroll-nav');
+            if (window.scrollY > 100) { // Show after scrolling 100px
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>
